@@ -14,8 +14,7 @@
           </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item command="resetPassword">修改密码</el-dropdown-item>
-            <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+            <el-dropdown-item command="logout" @click="handleOut">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -26,6 +25,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 import {getUserInfo} from "@/api/user";
+import {useRouter} from "vue-router";
 const nickName=ref()
 onMounted(()=>{
   getUserInfo({}).then(res=>{
@@ -35,6 +35,11 @@ onMounted(()=>{
     }
   })
 })
+const router=useRouter()
+const handleOut=()=>{
+  localStorage.removeItem('sid')
+  router.push('/login')
+}
 </script>
 <style>
 .f-header {

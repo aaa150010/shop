@@ -77,6 +77,9 @@ export function getSupplier(pageNum,name) {
             name
         }})
 }
+export function getSupplier1(pageNum) {
+    return axios.post("/suppliers/page",{pageNum,pageSize:20})
+}
 //新增供应商
 export function addSupplier(form) {
     return axios.post("/suppliers/save",form)
@@ -129,6 +132,9 @@ export function getCommodity(pageNum,name) {
             name
         }})
 }
+export function getCommodity1(pageNum) {
+    return axios.post("/products/page",{pageNum,pageSize:20})
+}
 //新增商品
 export function addCommodity(form) {
     return axios.post("/products/save",form)
@@ -141,3 +147,35 @@ export function deleteCommodity(id) {
 export function updataCommodity(form) {
     return axios.post('/product-types/update',form)
 }
+
+
+//供应入货管理
+
+
+//分页查询入货记录
+export function getRuku(pageNum,product) {
+    return axios.post("/supply-records/page",{pageNum,data:{
+            product
+        }})
+}
+//新增入货记录
+export function addRuku(form) {
+    return axios.post("/supply-records/save",form)
+}
+
+
+//上架记录管理
+
+
+//分页查询上架记录
+export function getUpshop(pageNum,product) {
+    return axios.post("/shelf-records/page",{pageNum,data:{
+            product
+        }})
+}
+//新增上架记录
+export function addUpshop(form) {
+    return axios.post("/shelf-records/save",form)
+}
+
+

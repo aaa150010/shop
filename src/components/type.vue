@@ -108,6 +108,7 @@ const ruleForm=ref({
   name:'',
 })
 const ruleForm1=ref({
+  id:'',
   name:'',
 })
 const  ruleFormRef=ref()
@@ -141,6 +142,7 @@ const handleAddUser=()=>{
   dialogVisible.value=true
 }
 const handleUpdata=(item)=>{
+  ruleForm1.value.id=item.id
   ruleForm1.value.name=item.name
   dialogVisible1.value=true
 }

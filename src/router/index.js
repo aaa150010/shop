@@ -17,13 +17,13 @@ const routes = [
         path: "/index",
         component: () => import ("@/pages/index.vue"),
         name:'首页',
-        redirect: "/index/index",
+        redirect: "/index/commodity",
         children:[
-            {
-                path: "/index/index",
-                component: () => import ("@/components/index.vue"),
-                name:'用户首页'
-            },
+            // {
+            //     path: "/index/index",
+            //     component: () => import ("@/components/index.vue"),
+            //     name:'用户首页'
+            // },
             {
                 path: "/index/user",
                 component: () => import ("@/components/user.vue"),
@@ -48,6 +48,16 @@ const routes = [
                 path: "/index/commodity",
                 component: () => import ("@/components/commodity.vue"),
                 name:'商品管理'
+            },
+            {
+                path: "/index/ruku",
+                component: () => import ("@/components/ruku.vue"),
+                name:'入库管理'
+            },
+            {
+                path: "/index/upShop",
+                component: () => import ("@/components/upShop.vue"),
+                name:'上架管理'
             },
         ]
     },

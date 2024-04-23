@@ -52,9 +52,9 @@
           <el-form-item label="价格" prop="price">
             <el-input-number v-model="ruleForm.price" />
           </el-form-item>
-          <el-form-item label="库存数量" prop="stockQuantity">
-            <el-input-number v-model="ruleForm.stockQuantity" />
-          </el-form-item>
+<!--          <el-form-item label="库存数量" prop="stockQuantity">-->
+<!--            <el-input-number v-model="ruleForm.stockQuantity" disabled />-->
+<!--          </el-form-item>-->
           <el-form-item label="类型" prop="type">
             <el-select v-model="ruleForm.type" placeholder="请选择商品类型" style="width: 100%">
               <el-option :label="item.name" :value="item.name" v-for="item in typeArray" :key="item"/>
@@ -92,9 +92,6 @@
           </el-form-item>
           <el-form-item label="价格" prop="price">
             <el-input-number v-model="ruleForm1.price" />
-          </el-form-item>
-          <el-form-item label="库存数量" prop="stockQuantity">
-            <el-input-number v-model="ruleForm1.stockQuantity" />
           </el-form-item>
           <el-form-item label="类型" prop="type">
             <el-select v-model="ruleForm1.type" placeholder="请选择商品类型" style="width: 100%">
@@ -140,14 +137,13 @@ const ruleForm=ref({
   name:'',
   description:'',
   price:'',
-  stockQuantity:'',
   type:''
 })
 const ruleForm1=ref({
+  id:'',
   name:'',
   description:'',
   price:'',
-  stockQuantity:'',
   type:''
 })
 const  ruleFormRef=ref()
@@ -161,9 +157,6 @@ const rules = reactive({
   ],
   price: [
     {required: true, message: '请输入价格', trigger: 'blur'},
-  ],
-  stockQuantity: [
-    {required: true, message: '请输入库存', trigger: 'blur'},
   ],
   type: [
     {required: true, message: '请选择类型', trigger: 'blur'},
@@ -198,6 +191,7 @@ const handleAddUser=()=>{
   dialogVisible.value=true
 }
 const handleUpdata=(item)=>{
+  ruleForm1.value.id=item.id
   ruleForm1.value.name=item.name
   ruleForm1.value.description=item.description
   ruleForm1.value.price=item.price
